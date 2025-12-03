@@ -26,6 +26,10 @@ spec:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '1234'
     spec:
+{{- if .Values.configuration.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.configuration.nodeSelector | indent 8 }}
+{{- end }}
       containers:
         - name: {{ template "template_name" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

@@ -6,12 +6,15 @@ image:
 configuration:
   resources:
     requests:
-      memory: '4Gi'
-      cpu: '2'
+      memory: "4Gi"
+      cpu: "2"
     limits:
-      memory: '5Gi'
-      cpu: '3'
+      memory: "5Gi"
+      cpu: "3"
   replicas: 1
+  nodeSelector:
+    kubernetes.io/arch: amd64
+    kubernetes.io/os: linux
   env:
     ANODOT_LOG_LEVEL: "3"
     ANODOT_TAGS: "source=prometheus-remote-write"
